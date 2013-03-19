@@ -19,7 +19,6 @@ user "#{jrebel_user}" do
   comment "jrebel license server"
   shell "/bin/bash"
   home "#{install_path}"
-  supports :manage_home => true
 end
 
 # Make sure zip is installed. Stoopid zip files.
