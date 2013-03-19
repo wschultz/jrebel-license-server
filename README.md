@@ -1,4 +1,12 @@
-jrebel-license-server
-=====================
+Description
+===========
 
-Chef cookbook for JRebel Licensing Server
+Requirements
+============
+
+Attributes
+==========
+
+Usage
+=====
+

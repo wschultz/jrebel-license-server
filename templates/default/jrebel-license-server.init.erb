@@ -1,0 +1,49 @@
+#!/bin/sh -e
+# jrebel-license-server startup script
+#chkconfig: 2345 80 05
+#description: jrebel-license-server
+ 
+### BEGIN INIT INFO
+# Provides:          jrebel-license-server
+# Required-Start:    $remote_fs $syslog $time
+# Required-Stop:     $remote_fs $syslog $time
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start/stop jrebel-license-server
+# Description:       Start/stop jrebel-license-server
+### END INIT INFO
+
+# Define some variables
+# Name of app ( jrebel-license-server )
+APP=jrebel-license-server
+# Name of the user to run as
+USER=<%= @user %>
+# Location of application's bin directory
+BASE=<%= @base %>
+
+case "$1" in
+  # Start command
+  start)
+    echo "Starting $APP"
+    /bin/su -m $USER -c "cd $BASE && $BASE/bin/license-server.sh start &> /dev/null"
+    ;;
+  # Stop command
+  stop)
+    echo "Stopping $APP"
+    /bin/su -m $USER -c "cd $BASE && $BASE/bin/license-server.sh stop &> /dev/null"
+    echo "$APP stopped successfully"
+    ;;
+   # Restart command
+   restart)
+        $0 stop
+        sleep 5
+        $0 start
+        ;;
+  *)
+    echo "Usage: /etc/init.d/$APP {start|restart|stop}"
+    exit 1
+    ;;
+esac
+ 
+exit 0
+
