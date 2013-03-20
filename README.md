@@ -25,7 +25,7 @@ Installs and starts the JRebel Licensing Server
 Usage
 =====
 
-    include_recipe "java"
+    include_recipe "jrebel-license-server"
 
 This is useful for installing the license server from JRebel.
 
